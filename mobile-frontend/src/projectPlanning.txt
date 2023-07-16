@@ -1,0 +1,34 @@
+// DONT UPLOAD THIS FILE TO GITHUB
+/*
+CHAT MODULE
+- later will implement scroll hide for whatsappheaader and keep the chats status and calls.
+  --for now will keep the top part stuck too.
+
+- chat window me last message wala implement nahi kar rhe 
+  --tick wala bhi implement nahi karna
+
+- archive option bhi abhi implement nahi kar rhe 
+
+- pins ka option bhi iplement nahi kar rhe
+
+- no. of active chats ka indicator nahi dikha rahe abhi ke liye
+
+- making a custom TabBar
+  -- updating the unseen chats indicator, and groups tab at the left 
+
+- correct the flexboxes of time title, pin description in contact banner
+*/
+
+/*
+bla blab
+bla blalala
+*/
+
+/* 
+  - safeareaview container on the main parent component
+    -- how are multiple safeareaviews treated?
+
+  - otp login service provider for whatsapp
+
+  -* better way of writing style files 
+*/
