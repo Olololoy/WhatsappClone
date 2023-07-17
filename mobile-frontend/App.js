@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Provider} from 'react-redux';
@@ -6,11 +7,13 @@ import MainPageParentComponent from './src/components/chatParentComponent/mainPa
 
 function App(){ 
   return (
-  <GestureHandlerRootView style={{flex: 1, backgroundColor: 'blue'}}>        
+  <GestureHandlerRootView style={{flex: 1, backgroundColor: 'blue'}}> 
+    <NavigationContainer>
     {/* <Provider store={store}> */}
       {/* <AppScreen /> */}
       <MainPageParentComponent/>
     {/* </Provider> */}
+    </NavigationContainer>      
   </GestureHandlerRootView>
   );
 }

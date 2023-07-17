@@ -4,7 +4,8 @@ import {TabView, SceneMap } from 'react-native-tab-view';
 import styles from './styles';
 import en from '../../localization';
 import {tabViewRoutes} from './constants';
-import MainChatScreen from '../../modules/chatModule/screens/mainScreen/';
+// import ChatContactList from '../../modules/chatModule/screens/mainScreen/';
+import ChatStack from '../../modules/chatModule/navigation/chatNavigation';
 import MainStatusScreen from '../../modules/statusModule/screens/mainStatusScreen/mainStatusScreen';
 import MainVcScreen from '../../modules/vcModule/screens/mainVcScreen/mainStatusScreen';
 
@@ -15,7 +16,7 @@ function MainPageParentComponent () {
   const [index, setindex] = useState(0);
 
   const scene = SceneMap({
-    chats: MainChatScreen,
+    chats: ChatStack,
     status: MainStatusScreen,
     calls: MainVcScreen,
   });

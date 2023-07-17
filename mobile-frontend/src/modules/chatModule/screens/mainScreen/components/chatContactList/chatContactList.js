@@ -5,7 +5,7 @@ import styles from './styles';
 // import {Archive} from 'react-native-vector-icons/MaterialIcons';
 
 
-function MainChatScreen ( ) {
+function ChatContactList ({navigation}) {
 
   const Data = [
     {id: 1},
@@ -26,7 +26,7 @@ function MainChatScreen ( ) {
 
   const renderItemContact = ({item}) => {
     return (
-      <ContactBanner/>
+      <ContactBanner navigation={navigation}/>
     );
   }
 
@@ -61,4 +61,4 @@ function MainChatScreen ( ) {
 
 }
 
-export default MainChatScreen;
+export default ChatContactList;

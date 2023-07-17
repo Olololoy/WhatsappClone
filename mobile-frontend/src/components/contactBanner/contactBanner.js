@@ -1,14 +1,16 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import {NoProfile} from '../../assets/svgs';
+import { ROUTES } from '../../modules/chatModule/navigation/constants';
 import styles from './styles';
 
 function ContactBanner(props) {
-  
+  const { navigation } = props;
+
   return(
     <TouchableOpacity 
     style={styles.rootContainer}
-    onPress={() => {console.log('lmaooo'); return null;}}
+    onPress={() => {navigation.navigate(ROUTES.MESSAGE_WINDOW)}}
     >
       <View style={styles.imageContainer}>
         <NoProfile {...styles.profileSVG}/>

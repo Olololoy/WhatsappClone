@@ -1,8 +1,8 @@
 import React from 'react';
-import MainChatScreen from './components/mainChatScreen/mainChatScreen';
+import ChatContactList from './components/chatContactList/chatContactList';
 
-export default function ChatScreen() {
+export default function ChatScreen(props) {
   return (
-    <MainChatScreen/>
+    <ChatContactList {...props}/>
   )
 }
