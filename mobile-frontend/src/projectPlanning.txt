@@ -17,11 +17,25 @@ CHAT MODULE
   -- updating the unseen chats indicator, and groups tab at the left 
 
 - correct the flexboxes of time title, pin description in contact banner
+
+- background image in message window
+
+- dates render kar sakte hai, between messages
+
+- message bubble ke endings bana sakte hai
+
+- color code group members name in group messages
+
+- replies implement kar sakte hai
+
+- different vertical margins for multiple one sided messages 
+
 */
 
 /*
-bla blab
-bla blalala
+  To Be Done
+  - unique id to every customer
+  
 */
 
 /* 
