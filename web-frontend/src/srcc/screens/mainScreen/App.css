@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,41 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.mainParentBoundedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  /* border-width: 5px; */
+  /* border-color: green; */
+  /* border-style: solid; */
+  /* flex: 1; */
+  /* height: 100%;
+  width: 100%; */
+ 
+}
+
+/* 
+  align items stretch works as expected 
+  flex 1 also seems to work the same way but just not at the level of body and the just next child container
+*/
+
+.mainContentContainer {
+  display: flex;
+  /* flex:1; */
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  border-width: 5px;
+  border-color: black;
+  border-style: dashed;
+  height: 90%;
+  width: 90%;
+  /* border: 5px; */
+  /* width: 50vh;
+  height: 50vh; */
 }

@@ -1,0 +1,21 @@
+.parentSidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+    align-items: center;
+    justify-content: center;
+
+    /* border-style: dotted; */
+    /* border-color: aquamarine; */
+}
+
+.parentSidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+    align-items: center;
+    justify-content: center;
+
+    /* border-style: dotted; */
+    /* border-color: aquamarine; */
+}

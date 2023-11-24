@@ -1,11 +1,16 @@
 import logo from '../../../logo.svg';
 import './App.css';
+import ParentSidebar from './Components/parentSidebar/parentSidebar';
+import ActivityWindow from './Components/activityWindow/activityWindow';
 
 function MainScreen() {
   return (
-    <h1>
-      hello
-    </h1>
+      <div className='mainParentBoundedContainer'>
+        <div className='mainContentContainer'>
+          <ParentSidebar/>
+          <ActivityWindow/>
+        </div>
+      </div>
   );
 }
 

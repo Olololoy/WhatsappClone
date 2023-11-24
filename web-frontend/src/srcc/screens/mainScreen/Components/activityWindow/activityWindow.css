@@ -1,0 +1,8 @@
+.activityWindow {
+    display: flex;
+    flex-direction: column;
+    flex: 0.65;
+    /* color:blue; */
+    border-style: dotted;
+    border-color: greenyellow;
+}
