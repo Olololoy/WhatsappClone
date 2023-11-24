@@ -1,8 +1,15 @@
 .activityWindow {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex: 0.65;
     /* color:blue; */
     border-style: dotted;
     border-color: greenyellow;
+}
+
+.scrollMessageDiv {
+  width: 50vw;
+  height: 50vh
 }
