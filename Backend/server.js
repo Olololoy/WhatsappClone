@@ -10,6 +10,7 @@ app.use(express.json());
 
 //DB Config
 //mongo db password nyWiAIwTIUIeXuZy
+//mongo db uri - mongodb+srv://akshatkhandelwal1999:<password>@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority
 
 //api routes
 app.get('/', (req,res) => res.status(200).send('hello world'));
