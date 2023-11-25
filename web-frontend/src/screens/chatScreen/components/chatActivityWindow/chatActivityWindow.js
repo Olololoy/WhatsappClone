@@ -10,9 +10,29 @@ function ChatActivityWindow () {
 
     const [inputMessage, setinputMessage] = useState('');
     const [messageArray, setmessageArray] = useState(singleText?.messageData);
+    const [fetchedData, setfetchedData] = useState('');
     
     const sender = 'Anusha';
     const receiver = 'Akshat';
+
+    useEffect(()=>{
+      const fetchData = async () => {
+        try {
+          // const response = await fetch('http://localhost:9000/');
+          const response = await fetch('http://localhost:9000', { mode: 'no-cors' });
+          // console.log(response);
+
+          const result = await response.json();
+          // setinputMessage(result);
+          // console.log(response);
+
+        } catch (error) {
+          // console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    } , []);
 
     const handleSendClick = () => {
         const obj = {...singleText.messageData[0]};
@@ -47,7 +67,7 @@ function ChatActivityWindow () {
     }
 
     useEffect(() => {
-        console.log(messageArray);
+        // console.log(messageArray);
     }, [messageArray])
 
     return (
@@ -56,8 +76,9 @@ function ChatActivityWindow () {
             <div className='scrollViewOuterContainer'>    
                 <div className='scrollViewContainer'>
                     {messageArray.map((msgObj) => {
-                        return (<MessageCloud messageObj={msgObj} sender={singleText?.from} />)
+                        return (<MessageCloud messageObj={msgObj} sender={singleText?.from} key={msgObj.id} />)
                     })}
+                    {/* <MessageCloud messageObj={msgObj} sender={singleText?.from} /> */}
                 </div>
             </div>
             <div className='footerContainer'>
