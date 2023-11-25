@@ -1,0 +1,46 @@
+.chatActivityWindow {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.scrollViewOuterContainer {
+    height: 80%;
+    background-color: rgba(159, 143, 129, 0.363);
+
+}
+
+.scrollViewContainer {
+    overflow: auto;
+    height: 100%;
+    max-height: 93%;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footerContainer {
+    /* flex: 0.08; */
+    display: flex;
+    height: 70px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #eee;
+}
+
+.mainMessageInput {
+    width: 80%;
+    height: 50%;
+    margin-left: 2%;
+}
+
+.sendButton {
+    width: 10%;
+    height: 50%;
+    margin-left: 3%;
+}

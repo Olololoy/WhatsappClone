@@ -64,9 +64,9 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
-  border-width: 5px;
+  border-width: 1px;
   border-color: black;
-  border-style: dashed;
+  border-style: solid;
   height: 90%;
   width: 90%;
   /* border: 5px; */

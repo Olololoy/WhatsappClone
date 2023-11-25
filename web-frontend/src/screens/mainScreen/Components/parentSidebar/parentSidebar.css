@@ -5,8 +5,9 @@
     align-items: center;
     justify-content: center;
 
-    /* border-style: dotted; */
-    /* border-color: aquamarine; */
+
+    border-style: dotted;
+    border-color: aquamarine;
 }
 
 .parentSidebar {

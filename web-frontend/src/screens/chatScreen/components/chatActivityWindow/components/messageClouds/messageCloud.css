@@ -1,0 +1,33 @@
+.sentOuterContainer {
+    display: flex;
+    /* height: 10px; */
+    border-radius: 3px;
+    padding: 3px 4px 2px 3px;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 50%;
+    margin-bottom: 5px;
+    align-items: flex-start;
+
+    align-self: flex-end;
+    background-color: greenyellow;
+
+
+}
+
+.receivedOuterContainer {
+    display: flex;
+    /* height: 10px; */
+    border-radius: 3px;
+    padding: 3px 4px 2px 3px;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 50%;
+    align-items: flex-start;
+    margin-bottom: 5px;
+
+    
+    align-self: flex-start;
+    background-color: white;
+
+}
