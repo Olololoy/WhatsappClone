@@ -10,6 +10,7 @@ function ChatActivityWindow () {
 
     const [inputMessage, setinputMessage] = useState('');
     const [messageArray, setmessageArray] = useState(singleText?.messageData);
+    const [placehoderMessage, setplaceholderMessage] = useState('Message');
     const [fetchedData, setfetchedData] = useState('');
     
     const sender = 'Anusha';
@@ -42,7 +43,8 @@ function ChatActivityWindow () {
         //date and time bhi change kar sakte hai;
         const newArr = [...messageArray, obj];
         setmessageArray(newArr);
-        setinputMessage('sent');
+        setplaceholderMessage('sent');
+        setinputMessage('');
     }
 
     const handleRecieveClick = () => {
@@ -53,7 +55,8 @@ function ChatActivityWindow () {
         obj.from = sender;
         //date and time bhi change kar sakte hai;
         setmessageArray([...messageArray, obj]);
-        setinputMessage('received');
+        setplaceholderMessage('received');
+        setinputMessage('');
     }
 
     const handleMessageInput = (msg) => {
@@ -84,14 +87,14 @@ function ChatActivityWindow () {
             <div className='footerContainer'>
                     <input 
                     type='text' 
-                    placeholder='Message' 
+                    placeholder={placehoderMessage}
                     id='mainMessageTextbox' 
                     className='mainMessageInput'
                     value={inputMessage}
                     onChange={handleMessageInput}
                     />
                     <button onClick={handleSendClick} className='sendButton'> Send </button>
-                    <button onClick={handleRecieveClick} className='sendButton'> Receive </button>
+                    <button onClick={handleRecieveClick} className='receiveButton'> Receive </button>
             </div>
         </div>
     )

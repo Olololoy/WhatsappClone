@@ -44,3 +44,10 @@
     height: 50%;
     margin-left: 3%;
 }
+
+.receiveButton {
+    width: 10%;
+    height: 50%;
+    margin-left: 1.5%;
+    margin-right: 3%;
+}

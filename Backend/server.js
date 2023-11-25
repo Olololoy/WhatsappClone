@@ -1,5 +1,7 @@
 //importing
 import express from 'express';
+import mongoose from 'mongoose';
+import Messages from './dbMessages.js';
 
 //app Config
 const app = express();
@@ -10,10 +12,38 @@ app.use(express.json());
 
 //DB Config
 //mongo db password nyWiAIwTIUIeXuZy
-//mongo db uri - mongodb+srv://akshatkhandelwal1999:<password>@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority
+//mongo db uri - mongodb+srv://akshatkhandelwal1999:nyWiAIwTIUIeXuZy@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority
+const mongo_connection_url = 'mongodb+srv://akshatkhandelwal1999:nyWiAIwTIUIeXuZy@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(mongo_connection_url);     
+
+const db = mongoose.connection;
 
 //api routes
 app.get('/', (req,res) => res.status(200).send('hello world'));
+
+// app.post('/messages/new', (req, res) => {
+//     const dbMessage = req?.body; // yaha pe konsi form me hai message json ya js object and messages.create me jo db message jaa rha hai wo kya expect karta hai json ya js object
+
+//     Messages.create(dbMessage, (err, data) => {
+        
+//         if (err) { 
+//             res.status(500).send(err); // what is the structure of this error , also can parse this error here
+//         } else {
+//             res.status(201).send(data);
+//         }
+
+
+//     });
+// })
+
+app.post('/messages/new', (req, res) => {
+        const dbMessage = req?.body; 
+
+        Messages.create(dbMessage).then((result) => {
+            res.status(201).send(result);
+        });
+        
+    });
 
 //listen
 app.listen(port, () => console.log(`listening to port ${port}`));
