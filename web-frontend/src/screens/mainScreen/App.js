@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import ParentSidebar from './Components/parentSidebar/parentSidebar';
 import ActivityWindow from './Components/activityWindow/activityWindow';

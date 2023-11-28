@@ -8,7 +8,7 @@ const whatsappSchema = mongoose.Schema({
     time: String
 });
 
-const defaultExport = mongoose.model('messageContent', whatsappSchema);
+const defaultExport = mongoose.model('messagecontents', whatsappSchema);
 
 export default defaultExport;
 

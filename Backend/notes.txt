@@ -1,9 +1,13 @@
 what is a server ?
 
-res.status(200).send('hello world')); 
+res.status(200).send('hello world'); 
   double . what this exactly means 
 
 more info on json and how the network call works
   + why wasn't my initial hello wolrd network call working
 Become more comortable with json and json files
   also is json the most effecient way of sending data in a network ( effecient and practical )
+
+mongo db me data storage padhna padega thoda fast way then long way
+
+cors pe aur padh sakte hai

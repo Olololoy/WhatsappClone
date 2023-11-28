@@ -2,13 +2,36 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Messages from './dbMessages.js';
+import Pusher from 'pusher';
+import cors from 'cors';
+
 
 //app Config
 const app = express();
 const port = process.env.PORT || 9000 ;  // what is this, and what software provides this object node or js
+const pusher = new Pusher({
+  appId: "1715242",
+  key: "4eb069f1dce0c1999f5d",
+  secret: "80a25e92e932a0cffd26",
+  cluster: "ap2",
+  useTLS: true
+});
+
+
 
 //Middleware
 app.use(express.json());
+/*
+// this checks for some security and if it passes the security tests the request is pushed to the next steps or the appropriate backend functions ( middlewares )
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  next();
+})
+but using cors instead
+*/
+app.use(cors());
+
 
 //DB Config
 //mongo db password nyWiAIwTIUIeXuZy
@@ -17,6 +40,34 @@ const mongo_connection_url = 'mongodb+srv://akshatkhandelwal1999:nyWiAIwTIUIeXuZ
 mongoose.connect(mongo_connection_url);     
 
 const db = mongoose.connection;
+
+db.once("open", () => {
+  console.log('dbConnected');
+
+  const msgCollection = db.collection("messagecontents");
+  const changeStream = msgCollection.watch(); // understanding these even deeper
+
+  changeStream.on("change", (change) => {
+    console.log("A Change Occuerd", change);
+
+    if ( change.operationType === 'insert' ){
+      const messageDetails = change.fullDocument;
+//////////////////////////////////////////////////////// pusher ka kaam bas itna hi hai, api call karna jab db websocket data insert hone ka response bheje
+      pusher.trigger("messageChannel", "newInserted", {
+      from: messageDetails?.from,
+      data: messageDetails?.data,
+      id: messageDetails?.id,
+      date: messageDetails?.date,
+      time:  messageDetails?.time,
+    });
+////////////////////////////////////////////////////////
+  }
+  });
+
+  
+
+
+});
 
 //api routes
 app.get('/', (req,res) => res.status(200).send('hello world'));
@@ -38,12 +89,41 @@ app.get('/', (req,res) => res.status(200).send('hello world'));
 
 app.post('/messages/new', (req, res) => {
         const dbMessage = req?.body; 
-
+        
         Messages.create(dbMessage).then((result) => {
             res.status(201).send(result);
         });
         
     });
+
+app.get('/messages/sync', (req, res) => {
+
+      // Messages.find((err, data) => {
+      //   if ( err ) {
+      //     console.log(err);
+      //   } else {
+      //     res.status(200).send(data);
+      //   }
+      // });
+
+      Messages.find().exec()
+        .then((data) => {
+          res.status(200).send(data);
+        }).catch((error) => {
+          console.log(error);
+        });
+});
+
+app.delete( '/messages/filter/retards', (req, res) => {
+
+      Messages.deleteMany({ data: {$exists: true} })
+        .then( (data) => {
+          res.status(200).send(data);
+        }).catch ( (error) => {
+          console.log(error);
+        });
+});
+
 
 //listen
 app.listen(port, () => console.log(`listening to port ${port}`));
@@ -101,5 +181,22 @@ CRUD ( create read update delete - database operations )
 nodemon == node but just restarts the server when ny changes are saved in the file  ( quick overview assumption )
   nodemon server.js === node server.js + when server file changes again node server.js 
 
+express me get post wale funcitons ki inner understanding pls 
+  ya atleast apni type ki blackbox understanding
+
+Creating a websocket on your own
+
+Pusher
+  pusher ka kaam bas itna hi hai, api call karna jab db websocket jo yaha backend pe setup hai wo inserted ka message send kare
+    web socket ka kaam bhi to ye hi hai ki to and fro data bhejj sake / api call kar sake but frontend application ka execution process koi incoming calls ke liye kahi hosted url pe accessible nahi hota to koi api call ya data send kaise akre 
+      to web socket ek network line open karke rakhta hai ( which can be closed ig to save frontend resources when required ) where data can be sent 
+        its like the frontend application is now open to api calls from a particular source ( and the specifics of the needs may reslut in a more optimized networking solution/ approach that may be defined as web sockets) 
+          warna 2 urls aapas me to api calls kar hi sakte hai 
+            (another reason could be , while subscribing the db web socket it may not be too effecient for the frontend )
+  Also I just realized ki all operations handled on the backend can also be handled on the frontend side always ( but just to save resources we take that part of the logic off of the frontend and do that part on the backend 
+    ( this makes more sense if we consider the backend to have an attached database rather then present backends that are just backend logic and we use external database servers to store and retrieve our data anyways))
+
 */
+
+
 
