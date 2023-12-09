@@ -34,10 +34,11 @@ app.use(cors());
 
 
 //DB Config
-//mongo db password nyWiAIwTIUIeXuZy
-//mongo db uri - mongodb+srv://akshatkhandelwal1999:nyWiAIwTIUIeXuZy@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority
-const mongo_connection_url = 'mongodb+srv://akshatkhandelwal1999:nyWiAIwTIUIeXuZy@cluster0.5zdeka6.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(mongo_connection_url);     
+  //l1 offloaded
+  //l2 offloaded
+  //l3 offloaded
+  //l4 offloaded
+  //l5 offloaded
 
 const db = mongoose.connection;
 
